@@ -38,15 +38,22 @@ app.get('/info', (req, res) => {
   res.end(textOnPage)
 })
 
-app.get('/api/persons/:id', (request, response) => {
-  const id = Number(request.params.id)
+app.get('/api/persons/:id', (req, res) => {
+  const id = Number(req.params.id)
   const person  = persons.find(person => person.id === id)
   
   if ( person ) {
-    response.json(person)
+    res.json(person)
   } else {
-    response.status(404).end()
+    res.status(404).end()
   }
+})
+
+app.delete('/api/persons/:id', (req, res) => {
+  const id = Number(req.params.id)
+  persons = persons.filter(person => person.id !== id)
+  
+  res.status(204).end()
 })
   
 
