@@ -61,6 +61,13 @@ app.delete('/api/persons/:id', (req, res) => {
   res.status(204).end()
 })
 
+app.put('/api/persons/:id', (req, res) => {
+  const id = Number(req.params.id)
+  persons[id] = req.params.newObject
+  
+  res.json(person)
+})
+
 const generateId = () => {
   const newId = Math.floor(1000000000 * Math.random())
   return newId
