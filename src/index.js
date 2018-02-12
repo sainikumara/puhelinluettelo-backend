@@ -62,11 +62,11 @@ app.delete('/api/persons/:id', (req, res) => {
 })
 
 app.put('/api/persons/:id', (req, res) => {
-  const id = Number(req.params.id)
-  persons[id].number = req.params.newObject.number
-  person = persons[id]
+  let personWhoGetsANewNumber = persons.find(person => person.name === req.body.name)
 
-  res.json(person)
+  personWhoGetsANewNumber.number = req.body.number
+
+  res.json(persons).end()
 })
 
 const generateId = () => {
