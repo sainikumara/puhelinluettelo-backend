@@ -63,8 +63,9 @@ app.delete('/api/persons/:id', (req, res) => {
 
 app.put('/api/persons/:id', (req, res) => {
   const id = Number(req.params.id)
-  persons[id] = req.params.newObject
-  
+  persons[id].number = req.params.newObject.number
+  person = persons[id]
+
   res.json(person)
 })
 
