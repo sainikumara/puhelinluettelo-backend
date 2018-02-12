@@ -1,7 +1,7 @@
-POST http://localhost:3001/api/persons
+POST https://protected-taiga-97055.herokuapp.com/api/persons
 content-type: application/json
 
 {
     "name": "Hela Helanen",
-    "number": ""
+    "number": "9999"
 }
