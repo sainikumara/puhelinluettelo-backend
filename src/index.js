@@ -62,9 +62,15 @@ app.delete('/api/persons/:id', (req, res) => {
 })
 
 app.put('/api/persons/:id', (req, res) => {
-  let personWhoGetsANewNumber = persons.find(person => person.name === req.body.name)
+  const body = req.body
 
-  personWhoGetsANewNumber.number = req.body.number
+  if (body.number === undefined || body.number === "") {
+    return res.status(400).json({error: 'number missing'})
+  }
+  
+  let personWhoGetsANewNumber = persons.find(person => person.name === body.name)
+
+  personWhoGetsANewNumber.number = body.number
 
   res.json(persons).end()
 })
